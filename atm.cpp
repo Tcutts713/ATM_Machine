@@ -13,7 +13,7 @@
 using namespace std;
 
 
-float Balancefile(string pinNum)
+double Balancefile(string pinNum)
 {
     //Declare file name variable
     string fileName = pinNum + ".txt";
@@ -28,7 +28,7 @@ float Balancefile(string pinNum)
     }
 
     // Search for the exact match in the file
-    float line;
+    double line;
     while (!infile.eof())
     {
         infile >> line;
@@ -41,14 +41,14 @@ float Balancefile(string pinNum)
     // Close the file and declare fBalance
     infile.close();
 
-    float fBalance = line;
+    double fBalance = line;
 
     return fBalance;
 
 }
 
 //Function to update the file holding balance information
-float updateBalancefile(float newBalance, string pinNum)
+double updateBalancefile(double newBalance, string pinNum)
 {
     //Decalre file variables
     string fileName = pinNum + ".txt";
@@ -138,7 +138,7 @@ void ShowUsage()
 }
 
 //Option to show the user their current balance
-void ShowBalance(float userBalance)
+void ShowBalance(double userBalance)
 {
     cout << setw(20) << setfill('*') << "" << endl;
     cout << "Current balance is: $" << userBalance << endl;
@@ -147,33 +147,33 @@ void ShowBalance(float userBalance)
 }
 
 //Function to withdraw from the users account
-float Withdraw(float userBalance, string pinNum)
+double Withdraw(double userBalance, string pinNum)
 {
     //declare withdraw amount
-    float withdrawAmount;
+    double withdrawAmount;
 
     cout << setw(20) << setfill('*') << "" << endl;
     cout << "How much do you want to withdraw?" << endl;
     cin >> withdrawAmount;
     cout << setw(20) << setfill('*') << "" << endl;
     cout << "\n" << "\n" << endl;
-    float newBalance = userBalance - withdrawAmount;
+    double newBalance = userBalance - withdrawAmount;
     //Calling balance file to update it
     updateBalancefile(newBalance, pinNum);
 }
 
 //Function to desposit money into the users account
-float Deposit(float userBalance, string pinNum)
+double Deposit(double userBalance, string pinNum)
 {
     //declare deposit amount
-    float depAmount;
+    double depAmount;
 
     cout << setw(20) << setfill('*') << "" << endl;
     cout << "How much do you want to deposit?" << endl;
     cin >> depAmount;
     cout << setw(20) << setfill('*') << "" << endl;
     cout << "\n" << "\n" << endl;
-    float newBalance = userBalance + depAmount;
+    double newBalance = userBalance + depAmount;
     //Calling balance file to update it
     updateBalancefile(newBalance, pinNum);
 
@@ -213,7 +213,7 @@ int main()
         //Do loop so user has options to do multiple functions
         do
         {
-            float userBalance {Balancefile(pinNum)};
+            double userBalance {Balancefile(pinNum)};
             cout << setw(20) << setfill('*') << "" << endl;
             cout << "Please make your selection: ";
             cin >> userChoice;
